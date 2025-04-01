@@ -7,11 +7,11 @@ gsap.registerPlugin(MotionPathPlugin);
 
 onMounted(() => {
   const circles = [1, 2, 3, 4, 5];
-  const reverseCircles = [1, 4]; // Define which circles should be reversed
+  const reverseCircles = [2, 5, 4]; 
 
   circles.forEach(num => {
     gsap.to(`#circle_${num}_dot`, {
-      duration: 4, 
+      duration: 5, 
       repeat: -1, 
       ease: "none", 
       motionPath: {
@@ -19,7 +19,7 @@ onMounted(() => {
         align: `#circle_${num}_inner_path`,
         autoRotate: true,
         alignOrigin: [0.5, 0.5],
-        start: reverseCircles.includes(num) ? 1 : 0, // Reverse start and end for selected circles
+        start: reverseCircles.includes(num) ? 1 : 0, 
         end: reverseCircles.includes(num) ? 0 : 1
       }
     });
@@ -27,8 +27,17 @@ onMounted(() => {
 });
 </script>
 
+
 <template>
-    <svg width="1440" height="1024" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="circleGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(0,212,255,1)" />
+            <stop offset="100%" stop-color="rgba(2,0,36,1)" />
+          </radialGradient>
+        </defs>
+
         <!-- Circle 1 -->
         <path id="circle_1_stroke" d="M1100 264.5C1100 456.408 943.534 612 750.5 612C557.466 612 401 456.408 401 264.5C401 72.5918 557.466 -83 750.5 -83C943.534 -83 1100 72.5918 1100 264.5Z" stroke="#B2B2B2" stroke-width="4"/>
         <path id="circle_1_inner_path" d="M1070 264.5C1070 436 930 572 750.5 572C571 572 431 436 431 264.5C431 93 571 -43 750.5 -43C930 -43 1070 93 1070 264.5Z" fill="none" stroke="none"/>
@@ -53,5 +62,9 @@ onMounted(() => {
         <path id="circle_5_stroke" d="M414 101.5C414 293.382 255.323 449 59.5 449C-136.323 449 -295 293.382 -295 101.5C-295 -90.3817 -136.323 -246 59.5 -246C255.323 -246 414 -90.3817 414 101.5Z" stroke="#B2B2B2" stroke-width="4"/>
         <path id="circle_5_inner_path" d="M384 101.5C384 264 234 419 59.5 419C-115 419 -265 264 -265 101.5C-265 -61 -115 -216 59.5 -216C234 -216 384 -61 384 101.5Z" fill="none" stroke="none"/>
         <circle id="circle_5_dot" cx="290.5" cy="339.5" r="7.5" fill="#1E1E1E"/>
-    </svg>        
+
+        <!-- Circle 6 -->
+        <path id="circle_6_stroke" d="M1808 1154.5C1808 1346.38 1649.32 1502 1453.5 1502C1257.68 1502 1099 1346.38 1099 1154.5C1099 962.618 1257.68 807 1453.5 807C1649.32 807 1808 962.618 1808 1154.5Z" stroke="#B2B2B2" stroke-width="4"/>
+        </svg>
+           
 </template>
